@@ -21,7 +21,7 @@ public class StartupController : MonoBehaviour
 
         m_sideSelectX.interactable = false;
         m_sideSet = true;
-        ApplicationModel.playerStart = true;
+        ApplicationModel.playerStart = (int) ApplicationModel.PlayerStartState.Unset;
 
         m_sideSelectX.onClick.AddListener(delegate {
             SetPlayerSide(m_sideSelectX.GetComponentInChildren<Text>().text);
@@ -39,20 +39,20 @@ public class StartupController : MonoBehaviour
         {
             m_sideSelectO.interactable = true;
             m_sideSelectX.interactable = false;
-            ApplicationModel.playerStart = true;
+            ApplicationModel.playerStart = (int) ApplicationModel.PlayerStartState.Start;
         }
         else
         {
             m_sideSelectX.interactable = true;
             m_sideSelectO.interactable = false;
-            ApplicationModel.playerStart = false;
+            ApplicationModel.playerStart = (int) ApplicationModel.PlayerStartState.Last;
         }
     }
 
     void SetDifficultyLevel (int level)
     {
         m_difficultyLabel.text = ApplicationModel.GetDifficultyLabel(level);
-        ApplicationModel.difficultyLevel = level;
+        ApplicationModel.difficulty = (ApplicationModel.Difficulty)level;
     }
 
     void LoadGameBoard()

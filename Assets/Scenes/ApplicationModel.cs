@@ -1,10 +1,10 @@
 ﻿public class ApplicationModel
 {
     public static bool gameStarted = false;
-    public static bool playerStart = false;
-    public static int difficultyLevel = 0;
+    public static int playerStart = 0;
+    public static Difficulty difficulty = Difficulty.Easy;
 
-    public enum DifficultyLabel
+    public enum Difficulty
     {
         Easy, Medium, Hard
     }
@@ -14,15 +14,46 @@
         Win, Lose, Draw
     }
 
+    public enum PlayerStartState
+    {
+        Unset, Start, Last
+    }
+
+    public enum TurnState
+    {
+        AI, PLAYER
+    }
+
     public static string GetDifficultyLabel (int difficulty)
     {
-        DifficultyLabel difficultyLabel = (DifficultyLabel)difficulty;
-        return difficultyLabel.ToString();
+        Difficulty difficultyLevel = (Difficulty)difficulty;
+        return difficultyLevel.ToString();
     }
 
     public static string GetGameState (int state)
     {
         GameState gameState = (GameState)state;
         return gameState.ToString();
+    }
+
+    public static bool DeterminePlayerStartState(int playerState)
+    {
+        bool playerStart = true;
+        switch (playerState)
+        {
+            case (int)ApplicationModel.PlayerStartState.Unset:
+                playerStart = true;
+                break;
+            case (int)ApplicationModel.PlayerStartState.Start:
+                playerStart = true;
+                break;
+            case (int)ApplicationModel.PlayerStartState.Last:
+                playerStart = false;
+                break;
+            default:
+                playerStart = true;
+                break;
+        }
+        return playerStart;
     }
 }

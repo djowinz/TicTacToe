@@ -2895,6 +2895,7 @@ MonoBehaviour:
   - {fileID: 1260827695}
   - {fileID: 1340878761}
   - {fileID: 902210193}
+  m_playerStart: 1
 --- !u!114 &1998736288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2906,6 +2907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46797050e73e5f47a8b5a7e6ff23ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_difficultyLevel: 0
 --- !u!1 &2029881251
 GameObject:
   m_ObjectHideFlags: 0
